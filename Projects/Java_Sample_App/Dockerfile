@@ -12,7 +12,7 @@ WORKDIR /app
 # Copy the source code form HOST machine to your container ( In this case from /src to /app )
 COPY src/Main.java /app/Main.java
 
-# Compile java application code
+# Compile java application code with javac
 RUN javac Main.java
 
 # Run the Application
