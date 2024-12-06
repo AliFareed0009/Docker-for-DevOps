@@ -24,7 +24,7 @@ This Repository is made to practice Docker in and implement daily life scenarios
 - Docker uses the container on the host O.S to run applications. It allows applications to use the same Linux Kernel as a system on the host computer,rather than creating a whole virtual O.S.
 
 ## Docker Architecture
-  ![Docker Architecture](/https://github.com/AliFareed0009/Docker-for-DevOps/tree/a1fe1cd115a33162ace3770391af4f029c8a4bda/Images)
+  ![Docker Architecture](/https://github.com/AliFareed0009/Docker-for-DevOps/blob/51551694b6c2030f027f848c3a2fcac8ed490d97/Images/Architecture.png)
 
 # Docker Images
 - Docker images are the read-only binary templates used to create docker containers. or, a single file with all dependencies and configurations required to run a program.
