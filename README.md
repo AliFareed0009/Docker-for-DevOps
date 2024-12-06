@@ -53,6 +53,8 @@ This Repository is made to practice Docker in and implement daily life scenarios
 - Dockerfile is a text file it contains some set of instruction
 - Automation of docker image creation
 
+ ![Docker Architecture](https://github.com/AliFareed0009/Docker-for-DevOps/blob/main/Images/DockerFile.png?raw=true)
+
 ## Creation of  Dockerfile
 
 - FROM : For the base image. This command must be on top of the docker file.
@@ -90,6 +92,8 @@ This Repository is made to practice Docker in and implement daily life scenarios
     Check the Mountpoint in inspect
     3. docker run -d --name <container_name> -v <volume_name>:/var/lib/mysql
     4. docker volume ls
+
+![Docker Architecture](https://github.com/AliFareed0009/Docker-for-DevOps/blob/main/Images/Volumes.png?raw=true)
 
 # Docker Compose
 # Docker registry
