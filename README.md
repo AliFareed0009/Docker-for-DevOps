@@ -6,6 +6,17 @@
 
 This Repository is made to practice Docker in and implement daily life scenarios of a Devops Engineer.
 
+## Folders
+
+#### 
+
+| Folder Name | Useages     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `Java_Sample_App` | `Java Application` | A simple application which shows current time |
+| `Python_Flask_App` | `Python Application` | A simple application which show health of the server |
+| `React_Web_App` | `React Application` | A simple Web Application which shows Welcome Page of React js  |
+| `Two-Tier_Flask_App` | `Flask & MySQL Application` | A simple todo application with mysql database connected |
+
 # The Following are topics covered in this Repository
 
 ## Introduction
@@ -13,7 +24,7 @@ This Repository is made to practice Docker in and implement daily life scenarios
 - Docker uses the container on the host O.S to run applications. It allows applications to use the same Linux Kernel as a system on the host computer,rather than creating a whole virtual O.S.
 
 ## Docker Architecture
-  ![DevOps](https://cdn.hashnode.com/res/hashnode/image/upload/v1679457321415/e404c522-8c6c-429a-b226-f8c98b9c3948.gif)
+  ![Docker Architecture](/home/ali-fareed/Ali/Devops/Docker/Images/Architecture.png)
 
 # Docker Images
 - Docker images are the read-only binary templates used to create docker containers. or, a single file with all dependencies and configurations required to run a program.
@@ -98,16 +109,7 @@ This Repository is made to practice Docker in and implement daily life scenarios
 - Project_1 : 3 Tier Application with Docker Compose
 - Project_2 : Deploying a Web Application with Nginx and MySQL
 
-## Folders
 
-#### 
-
-| Folder Name | Useages     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `Java_Sample_App` | `Java Application` | A simple application which shows current time |
-| `Python_Flask_App` | `Python Application` | A simple application which show health of the server |
-| `React_Web_App` | `React Application` | A simple Web Application which shows Welcome Page of React js  |
-| `Two-Tier_Flask_App` | `Flask & MySQL Application` | A simple todo application with mysql database connected |
 
 
 
