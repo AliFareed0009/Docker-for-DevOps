@@ -129,10 +129,11 @@ This Repository is made to practice Docker in and implement daily life scenarios
     To  pull the image from docker Hub regitry
     3. docker pull DockerHub_username/image_name:version
 
-# Multi-Stage Docker Builds
-    - With multi-stage builds, you use multiple FROM statements in your Dockerfile. Each FROM instruction can use a different base, and each of them begins a new stage of the build. You can selectively copy artifacts from one stage to another, leaving behind everything you don't want in the final image.
-# Multi-Stage DockerFile
-    # Dockerfile-multistage
+# Docker Multi-Stage Docker Builds
+- With multi-stage builds, you use multiple FROM statements in your Dockerfile. Each FROM instruction can use a different base, and each of them begins a new stage of the build. You can selectively copy artifacts from one stage to another, leaving behind everything you don't want in the final image.
+
+### Multi-Stage DockerFile
+        # Dockerfile-multistage
     # ------- stage_1 starts here ------- #
     # This base image python:3.7 with size 1.02GB is used to install packages
     # FROM Base image python and givee this stage a name Builder
@@ -157,6 +158,7 @@ This Repository is made to practice Docker in and implement daily life scenarios
     COPY --from=builder /usr/local/lib/python3.7/site-packages/ /usr/local/lib/python3.7/site-packages/
     COPY . .
     ENTRYPOINT [ "python3", "run.py" ]
+
 
 # Monitoring and Logging in Docker
 # Orchestrating Docker with Kubernetes
