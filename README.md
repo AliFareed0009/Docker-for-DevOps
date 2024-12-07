@@ -130,33 +130,33 @@ This Repository is made to practice Docker in and implement daily life scenarios
     3. docker pull DockerHub_username/image_name:version
 
 # Multi-Stage Docker Builds
-    With multi-stage builds, you use multiple FROM statements in your Dockerfile. Each FROM instruction can use a different base, and each of them begins a new stage of the build. You can selectively copy artifacts from one stage to another, leaving behind everything you don't want in the final image.
+    - With multi-stage builds, you use multiple FROM statements in your Dockerfile. Each FROM instruction can use a different base, and each of them begins a new stage of the build. You can selectively copy artifacts from one stage to another, leaving behind everything you don't want in the final image.
+# Multi-Stage DockerFile
+    # Dockerfile-multistage
+    # ------- stage_1 starts here ------- #
+    # This base image python:3.7 with size 1.02GB is used to install packages
+    # FROM Base image python and givee this stage a name Builder
+    FROM python:3.7 AS builder
 
-    1. # Dockerfile-multistage
-# ------- stage_1 starts here ------- #
-# This base image python:3.7 with size 1.02GB is used to install packages
-# FROM Base image python and givee this stage a name Builder
-FROM python:3.7 AS builder
+    # Make a Working Directory
+    WORKDIR /app
 
-# Make a Working Directory
-WORKDIR /app
+    # Copy the requirements to this working directory
+    COPY requirements.txt .
 
-# Copy the requirements to this working directory
-COPY requirements.txt .
+    # Install whatever is in requirements.txt file
+    RUN pip install -r requirements.txt
 
-# Install whatever is in requirements.txt file
-RUN pip install -r requirements.txt
+    # ------- stage_1 ends here ------- #
 
-# ------- stage_1 ends here ------- #
-
-# ------- stage_2 starts here ------- #
-# This base image python:3.7-slim with size 125MB
-FROM python:3.7-slim
-WORKDIR /app
-# Copy the installed package from stage_1 to this final image
-COPY --from=builder /usr/local/lib/python3.7/site-packages/ /usr/local/lib/python3.7/site-packages/
-COPY . .
-ENTRYPOINT [ "python3", "run.py" ]
+    # ------- stage_2 starts here ------- #
+    # This base image python:3.7-slim with size 125MB
+    FROM python:3.7-slim
+    WORKDIR /app
+    # Copy the installed package from stage_1 to this final image
+    COPY --from=builder /usr/local/lib/python3.7/site-packages/ /usr/local/lib/python3.7/site-packages/
+    COPY . .
+    ENTRYPOINT [ "python3", "run.py" ]
 
 # Monitoring and Logging in Docker
 # Orchestrating Docker with Kubernetes
