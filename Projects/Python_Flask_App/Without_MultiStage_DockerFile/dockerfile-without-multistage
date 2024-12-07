@@ -1,0 +1,18 @@
+# Dockerfile-without-multistage
+# Pull Base Image
+FROM python:3.7
+
+# Run update after installing base image python
+RUN apt-get update -y 
+
+# Make /app main folder for application
+WORKDIR /app
+
+# Copy code from HOST to container /app
+COPY . .
+
+# Install flask 
+RUN pip install -r requirements.txt
+
+# This will run always
+ENTRYPOINT [ "python", "run.py" ]
