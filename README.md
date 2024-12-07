@@ -39,15 +39,19 @@ This Repository is made to practice Docker in and implement daily life scenarios
 - The image is a template and the container is a copy of that template.
 
 # Docker Commands
-- docker images - see all images
-- docker ps - see running containers 
-- docker ps -a - see all containers
-- docker build -t <image_name> - to build image
-- docker run <container_name> - to start/run a container 
-- docker stop <container_name> - to stop a container
-- docker rm <container_name> - to delete a container
-- docker image rm <imaage_name> - to delete an image
-- docker run -itd --name <container_name> <image_name> - to run a container in a de-attach mode
+- docker images - To see all images
+- docker ps - To see running containers 
+- docker ps -a - To see all containers
+- docker build -t <image_name> - To build image
+- docker run <container_name> - To start/run a container 
+- docker stop <container_name> - To stop a container
+- docker rm <container_name> - To delete a container
+- docker image rm <imaage_name> - To delete an image
+- docker run -itd --name <container_name> <image_name> - To run a container in a de-attach mode
+- docker rm -vf $(docker ps -aq) - To delete all containers including its volumes forcefully
+- docker rmi -f $(docker images -aq) - To delete all the images forcefully
+- docker compose up - To start the containers in compose-yaml file
+- docker compose down - Stop and remove all the containers
 
 # DockerFile
 - Dockerfile is a text file it contains some set of instruction
@@ -100,17 +104,20 @@ This Repository is made to practice Docker in and implement daily life scenarios
 - Compose simplifies the control of your entire application stack, making it easy to manage services, networks, and volumes in a single, comprehensible YAML configuration file. Then, with a single command, you create and start all the services from your configuration file.
 
 ### Steps to Run docker Compose
+    To Install docker compose run the below command
+    1. sudo apt-get install docker-compose-v2
+
     To start all the services defined in your compose.yaml file:
-    1. docker compose up
+    2. docker compose up
 
     To stop and remove the running services:
-    2. docker compose -d
+    3. docker compose -d
 
     If you want to monitor the output of your running containers and debug issues, you can view the logs with:
-    3. docker compose logs
+    4. docker compose logs
 
     To lists all the services along with their current status:
-    4. docker compose ps
+    5. docker compose ps
 
 # Docker registry
 # Multi-Stage Docker Builds
