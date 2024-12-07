@@ -122,7 +122,8 @@ This Repository is made to practice Docker in and implement daily life scenarios
 # Docker registry
 # Multi-Stage Docker Builds
 # Monitoring and Logging in Docker
-# Orchestrating Docker with Kubernetes ( Introduction )
+# Orchestrating Docker with Kubernetes
+# ( Introduction )
 
 ## Mini_Projects
 
