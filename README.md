@@ -135,6 +135,7 @@ This Repository is made to practice Docker in and implement daily life scenarios
 ### Multi-Stage DockerFile
         # Dockerfile-multistage
     # ------- stage_1 starts here ------- #
+
     # This base image python:3.7 with size 1.02GB is used to install packages
     # FROM Base image python and givee this stage a name Builder
     FROM python:3.7 AS builder
@@ -151,14 +152,20 @@ This Repository is made to practice Docker in and implement daily life scenarios
     # ------- stage_1 ends here ------- #
 
     # ------- stage_2 starts here ------- #
+
     # This base image python:3.7-slim with size 125MB
     FROM python:3.7-slim
+
     WORKDIR /app
+
     # Copy the installed package from stage_1 to this final image
     COPY --from=builder /usr/local/lib/python3.7/site-packages/ /usr/local/lib/python3.7/site-packages/
+
     COPY . .
+    
     ENTRYPOINT [ "python3", "run.py" ]
 
+    # ------- stage_2 ends here ------- #
 
 # Monitoring and Logging in Docker
 # Orchestrating Docker with Kubernetes
