@@ -96,6 +96,22 @@ This Repository is made to practice Docker in and implement daily life scenarios
 ![Docker Volume](https://github.com/AliFareed0009/Docker-for-DevOps/blob/main/Images/Volumes.png?raw=true)
 
 # Docker Compose
+- Docker Compose is a tool for defining and running multi-container applications. It is the key to unlocking a streamlined and efficient development and deployment experience.
+- Compose simplifies the control of your entire application stack, making it easy to manage services, networks, and volumes in a single, comprehensible YAML configuration file. Then, with a single command, you create and start all the services from your configuration file.
+
+### Steps to Run docker Compose
+    To start all the services defined in your compose.yaml file:
+    1. docker compose up
+
+    To stop and remove the running services:
+    2. docker compose -d
+
+    If you want to monitor the output of your running containers and debug issues, you can view the logs with:
+    3. docker compose logs
+
+    To lists all the services along with their current status:
+    4. docker compose ps
+
 # Docker registry
 # Multi-Stage Docker Builds
 # Monitoring and Logging in Docker
