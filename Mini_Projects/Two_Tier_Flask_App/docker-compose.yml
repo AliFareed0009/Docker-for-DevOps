@@ -1,0 +1,48 @@
+version: "3.8"
+
+services: # All Containers come in the services 
+  mysql: # Container name
+    image: mysql:5.7 # Image
+    container_name: mysql # Container name
+    environment: # Enviroment Variables
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: devops
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+    volumes: # Volumes and storage
+      - ./mysql-data:/var/lib/mysql
+      - ./message.sql:/docker-entrypoint-initdb.d/message.sql  
+    networks: # Network
+      - two-tier
+    healthcheck: # Ping localhost from mysql until its up and running
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 60s
+
+  flask-app: # Container name
+    build: # Image build
+      context: . # Where the image is present (DokerFile)
+    container_name: two-tier-app # Container name
+    ports: # Ports Expose
+      - "5000:5000"
+    environment: # Enviroment variable
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_DB: devops
+    depends_on: # Until the mysql is not created the two-tier-app will not create
+      - mysql
+    networks: # Networks
+      - two-tier
+    restart: always # If healthcheck is not pass then restart
+    healthcheck: # Don't allow unitl curl localhost health is 5000
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+networks: # Networks 
+  two-tier:
