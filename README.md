@@ -174,9 +174,11 @@ This Repository is made to practice Docker in and implement daily life scenarios
     Creates a nohup.out file
     1. nohup docker atach container_id $
 
-# Docker registry
-    First rename the docker image in docker regitry format
-    1. docker image tag image_name:version DockerHub_username/image_name:version
+# Monitoring and Logging in Docker
+
+### Commands use to create nohup file
+    Creates a nohup.out file
+    cmd: nohup docker atach container_id $
 
 ## Mini_Projects
 
