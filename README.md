@@ -168,13 +168,7 @@ This Repository is made to practice Docker in and implement daily life scenarios
     # ------- stage_2 ends here ------- #
 
 # Monitoring and Logging in Docker
-
 - We can monitor the docker continer with the following command, the output will redirect to a nohup file
-
-    Creates a nohup.out file
-    1. nohup docker atach container_id $
-
-# Monitoring and Logging in Docker
 
 ### Commands use to create nohup file
     Creates a nohup.out file
