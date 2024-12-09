@@ -184,7 +184,7 @@ This Repository is made to practice Docker in and implement daily life scenarios
 ## Projects
 
 - Project_1 : 3 Tier Application with Docker Compose
-- Project_2 : Deploying a Web Application with Nginx and MySQL
+- Project_2 : Deploying a Web Notes Application with Django, Nginx and MySQL
 
 
 
