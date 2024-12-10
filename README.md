@@ -89,15 +89,19 @@ This Repository is made to practice Docker in and implement daily life scenarios
     4. docker network inspect <network_name>
 
 # Docker Volumes and Storage
-- Docker Networking is used to communicate two or more containers with each other.
+- Volumes are persistent data stores for containers, created and managed by Docker.
+- When you create a volume, it's stored within a directory on the Docker host. When you mount the volume into a container, this directory is what's mounted into the container. Volumes are managed by Docker and are isolated from the core functionality of the host machine.
 
 ### Steps to create a docker Volumes
 
     1. docker volume create <volume_name>
-    2. docker volume inspect <volume_name>
+    2. docker volume inspect <volume_name> 
+    
     Check the Mountpoint in inspect
     3. docker run -d --name <container_name> -v <volume_name>:/var/lib/mysql
+    
     4. docker volume ls
+    5. docker volume rm <volume_name>
 
 ![Docker Volume](https://github.com/AliFareed0009/Docker-for-DevOps/blob/main/Images/Volumes.png?raw=true)
 
