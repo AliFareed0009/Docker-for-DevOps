@@ -1,0 +1,44 @@
+#version: "3.8"
+services:
+  mysql_db:
+    image: mysql:latest
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: Test@123
+      MYSQL_DATABASE: expenses_tracker
+    volumes:
+      - ./java-app-data:/var/lib/mysql
+    networks:
+      - expenses-app-nw
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD","mysqladmin","ping","-h","localhost","-uroot","-pTest@123"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    restart: always
+
+  java_app:
+  #  image: expenses_tracker_app - To pull image from repository wrte the image name here
+    build: 
+      context: .
+    container_name: expensesapp
+    environment:
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_URL: "jdbc:mysql://mysql:3306/expenses_tracker?allowPublicKeyRetrieval=true&useSSL=false"
+      SPRING_DATASOURCE_PASSWORD: Test@123
+    ports:
+      - "8080:8080"
+    networks:
+      - expenses-app-nw
+    depends_on:
+      - mysql_db
+    restart: always
+
+networks:
+  expenses-app-nw:
+
+volumes:
+  mysql-data:
