@@ -10,12 +10,14 @@ This Repository is made to practice Docker in and implement daily life scenarios
 
 #### 
 
-| Folder Name | Useages     | Description                       |
+| Folder Name | Technologies     | Useages & Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `Java_Sample_App` | `Java Application` | A simple application which shows current time |
 | `Python_Flask_App` | `Python Application` | A simple application which show health of the server |
 | `React_Web_App` | `React Application` | A simple Web Application which shows Welcome Page of React js  |
 | `Two-Tier_Flask_App` | `Flask & MySQL Application` | A simple todo application with mysql database connected |
+| `Nginx_MySQL_Web_Notes_App` | `React & Django Application` | A simple Web application to take notes with mysql database |
+| `Three_Tier_Expenses_Tracker_App` | `Java, Spring Boot & MySQL Application` | A simple Expense Tracker application |
 
 # The Following are topics covered in this Repository
 
