@@ -99,7 +99,7 @@ This Repository is made to practice Docker in and implement daily life scenarios
     
     Check the Mountpoint in inspect
     3. docker run -d --name <container_name> -v <volume_name>:/var/lib/mysql
-    
+
     4. docker volume ls
     5. docker volume rm <volume_name>
 
@@ -187,7 +187,7 @@ This Repository is made to practice Docker in and implement daily life scenarios
 - Project_3 : React_Web_App
 - Project_4 : Two-Tier_Flask_App
 
-## Projects
+## Mega_Projects
 
 - Project_1 : 3 Tier Application with Docker Compose
 - Project_2 : Deploying a Web Notes Application with Django, Nginx and MySQL
