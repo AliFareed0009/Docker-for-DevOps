@@ -80,6 +80,8 @@ This Repository is made to practice Docker in and implement daily life scenarios
 
 # Docker Networking
 - Docker Networking is used to communicate two or more containers with each other.
+- Networking allows containers to communicate with each other and with the host system. Containers run isolated from the host system
+and need a way to communicate with each other and with the host system.
 
 ### Steps to create a docker network
 
@@ -88,9 +90,79 @@ This Repository is made to practice Docker in and implement daily life scenarios
     3. docker network ls
     4. docker network inspect <network_name>
 
+By default, Docker provides two network drivers for you, the bridge and the overlay drivers. 
+
+```
+docker network ls
+```
+
+```
+NETWORK ID          NAME                DRIVER
+xxxxxxxxxxxx        none                null
+xxxxxxxxxxxx        host                host
+xxxxxxxxxxxx        bridge              bridge
+```
+
+
+### Bridge Networking
+
+The default network mode in Docker. It creates a private network between the host and containers, allowing
+containers to communicate with each other and with the host system.
+
+![image](https://user-images.githubusercontent.com/43399466/217745543-f40e5614-ac34-4b78-85a9-91b24512388d.png)
+
+If you want to secure your containers and isolate them from the default bridge network you can also create your own bridge network.
+
+```
+docker network create -d bridge my_bridge
+```
+
+Now, if you list the docker networks, you will see a new network.
+
+```
+docker network ls
+
+NETWORK ID          NAME                DRIVER
+xxxxxxxxxxxx        bridge              bridge
+xxxxxxxxxxxx        my_bridge           bridge
+xxxxxxxxxxxx        none                null
+xxxxxxxxxxxx        host                host
+```
+
+This new network can be attached to the containers, when you run these containers.
+
+```
+docker run -d --net=my_bridge --name db training/postgres
+```
+
+This way, you can run multiple containers on a single host platform where one container is attached to the default network and 
+the other is attached to the my_bridge network.
+
+These containers are completely isolated with their private networks and cannot talk to each other.
+
+![image](https://user-images.githubusercontent.com/43399466/217748680-8beefd0a-8181-4752-a098-a905ebed5d2a.png)
+
+
+However, you can at any point of time, attach the first container to my_bridge network and enable communication
+
+```
+docker network connect my_bridge web
+```
+
+![image](https://user-images.githubusercontent.com/43399466/217748726-7bb347d0-3736-4f89-bdff-31d240b15150.png)
+
+
 # Docker Volumes and Storage
 - Volumes are persistent data stores for containers, created and managed by Docker.
 - When you create a volume, it's stored within a directory on the Docker host. When you mount the volume into a container, this directory is what's mounted into the container. Volumes are managed by Docker and are isolated from the core functionality of the host machine.
+- It is a very common requirement to persist the data in a Docker container beyond the lifetime of the container. However, the file system
+of a Docker container is deleted/removed when the container dies. 
+
+There are 2 different ways how docker solves this problem.
+
+1. Volumes
+2. Bind Directory on a host as a Mount
+
 
 ### Steps to create a docker Volumes
 
@@ -104,6 +176,28 @@ This Repository is made to practice Docker in and implement daily life scenarios
     5. docker volume rm <volume_name>
 
 ![Docker Volume](https://github.com/AliFareed0009/Docker-for-DevOps/blob/main/Images/Volumes.png?raw=true)
+
+## Bind Directory on a host as a Mount
+
+Bind mounts also aims to solve the same problem but in a complete different way.
+
+Using this way, user can mount a directory from the host file system into a container. Bind mounts have the same behavior as volumes, but
+are specified using a host path instead of a volume name. 
+
+For example, 
+
+```
+docker run -it -v <host_path>:<container_path> <image_name> /bin/bash
+```
+
+## Key Differences between Volumes and Bind Directory on a host as a Mount
+
+- Volumes are managed, created, mounted and deleted using the Docker API. However, Volumes are more flexible than bind mounts, as 
+they can be managed and backed up separately from the host file system, and can be moved between containers and hosts.
+
+- In a nutshell, Bind Directory on a host as a Mount are appropriate for simple use cases where you need to mount a directory from the host file system into
+a container, while volumes are better suited for more complex use cases where you need more control over the data being persisted
+in the container.
 
 # Docker Compose
 - Docker Compose is a tool for defining and running multi-container applications. It is the key to unlocking a streamlined and efficient development and deployment experience.
