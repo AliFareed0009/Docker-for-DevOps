@@ -50,6 +50,7 @@ This Repository is made to practice Docker in and implement daily life scenarios
 - docker rm <container_name> - To delete a container
 - docker image rm <imaage_name> - To delete an image
 - docker run -itd --name <container_name> <image_name> - To run a container in a de-attach mode
+- docker exec -it <mycontainer> sh - To run into a Docker container shell
 - docker rm -vf $(docker ps -aq) - To delete all containers including its volumes forcefully
 - docker rmi -f $(docker images -aq) - To delete all the images forcefully
 - docker compose up - To start the containers in compose-yaml file
